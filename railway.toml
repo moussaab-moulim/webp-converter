@@ -1,0 +1,10 @@
+[build]
+builder = "NIXPACKS"
+buildCommand = "yarn build"
+
+[build.nixpacksPlan.phases.setup]
+nixPkgs = ["nodejs", "yarn"]
+
+[build.nixpacksPlan.phases.install]
+dependsOn = ["setup"]
+cmds = ["corepack enable && sh install-webp.sh && yarn install --ignore-engines"]
