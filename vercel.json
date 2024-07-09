@@ -1,0 +1,3 @@
+{
+    "installCommand": "sh install-webp.sh && yarn install"
+  }
