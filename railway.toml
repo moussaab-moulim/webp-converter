@@ -7,4 +7,4 @@ nixPkgs = ["nodejs", "yarn"]
 
 [build.nixpacksPlan.phases.install]
 dependsOn = ["setup"]
-cmds = ["sh install-webp.sh && yarn install --ignore-engines"]
+cmds = ["chmod +x install-webp.sh && sh install-webp.sh && yarn install --ignore-engines"]
