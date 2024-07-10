@@ -6,9 +6,8 @@ import { exec } from 'child_process';
 
 import sharp from 'sharp';
 import JSZip from 'jszip';
-import { withApiAuthRequired } from '@auth0/nextjs-auth0';
 
-export const POST = withApiAuthRequired(async (req: NextRequest) => {
+export const POST = async (req: NextRequest) => {
   const formData = await req.formData();
   const files = formData.getAll('images') as File[];
   const resizeValue = formData.get('resize')
@@ -92,4 +91,4 @@ export const POST = withApiAuthRequired(async (req: NextRequest) => {
       contentType: 'application/zip',
     },
   });
-});
+};
