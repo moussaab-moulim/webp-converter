@@ -57,9 +57,17 @@ export const POST = async (req: NextRequest) => {
 
       await fs.writeFile(originalFilePath, resizedImageBuffer);
 
+      const params = [
+        '-q 100',
+        '-mt'
+      ]
+
+      if (originalExtension === 'png') {
+        params.push('-exact');
+      }
       await new Promise((resolve, reject) => {
         exec(
-          `cwebp ${originalFilePath} -o ${webpFilePath}`,
+          `cwebp ${params.join(' ')} ${originalFilePath} -o ${webpFilePath}`,
           (error, stdout, stderr) => {
             if (error) {
               reject(error);
